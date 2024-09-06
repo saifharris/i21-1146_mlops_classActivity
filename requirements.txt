@@ -1,0 +1,5 @@
+flask
+tensorflow
+numpy
+Pillow  # For handling images
+gunicorn  # For running the Flask app in production
