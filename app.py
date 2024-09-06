@@ -7,7 +7,7 @@ import numpy as np
 app = Flask(__name__)
 
 # Load the model
-model = load_model('Image_classify_2.keras')  # Replace with the actual path to your model file
+model = load_model('./Image_classify_2.keras')  # Replace with the actual path to your model file
 
 def preprocess_image(image):
     image = image.resize((224, 224))  # Example size; adjust as needed
