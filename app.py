@@ -28,12 +28,16 @@ def predict():
     if 'file' not in request.files:
         return jsonify({'error': 'No file provided'}), 400
 
-    file = request.files['file']
-    image = Image.open(file)
-    processed_image = preprocess_image(image)
+    try:
+        file = request.files['file']
+        image = Image.open(file)
+        processed_image = preprocess_image(image)
 
-    prediction = model.predict(processed_image)
-    return jsonify({'prediction': prediction.tolist()})
+        prediction = model.predict(processed_image)
+        return jsonify({'prediction': prediction.tolist()})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
